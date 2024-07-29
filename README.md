@@ -1,30 +1,27 @@
 # Catalyst_ZTP
 Zero-Touch Provisioning automates the process of configuring Cisco Catalyst Switches that are added in your network for the first time. The Catalyst ZTP script simplifies the creation and deployment of ZTP, making it easier to setup multiple devices at scale during the initial deployment.
 
-Here's a link to Cisco DevNet for more information on Cisco Zero Touch Provisioning.
+## Here's a link to Cisco DevNet for more information on Cisco Zero Touch Provisioning.
 * https://developer.cisco.com/docs/ios-xe/zero-touch-provisioning/#zero-touch-provisioning
 
 
-## Required Services
+# Required Services
 The ZTP script will require the following services from the network
 * DHCP Server with DHCP Option 150 and 67 will need to be configured
    * option tftp-server-name "10.1.1.5";
    * option bootfile-name "ztp.py";
 * TFTP Server details and credientials need to be provided
+  1. Edit "dotenv.txt" file with TFTP Server details:
+      * TFTP Server Login Credentials
+      * TFTP_USERNAME = "name"
+      * TFTP_PASSWORD = "password"
+      * TFTP_SERVER = "10.1.1.5"
+      * TFTP_SERVER_PATH = "/srv/tftp"
+  
+  2.  Rename file "dotenv.txt" to ".env"
 
 
-## TFTP Server information for ZTP script
-1. Edit "dotenv.txt" file with TFTP Server details:
-    * TFTP Server Login Credentials
-    * TFTP_USERNAME = "name"
-    * TFTP_PASSWORD = "password"
-    * TFTP_SERVER = "10.1.1.5"
-    * TFTP_SERVER_PATH = "/srv/tftp"
-
-2.  Rename file "dotenv.txt" to ".env"
-
-
-## Install the needed Python Package
+# Install the needed Python Package
 1.  Pip install the following Python Packages:
     * gradio
     * jinja2
@@ -34,7 +31,7 @@ The ZTP script will require the following services from the network
     * python-dotenv
 
 
-## Using the ZTP Gradio script
+# Using the ZTP Gradio script
 1. Run the python script
     * python ztp_gradio.py
 
@@ -78,6 +75,6 @@ The ZTP script will require the following services from the network
     ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/data_subdir2.png?raw=true)
 
 
-## Acknowledgements
+# Acknowledgements
 Huge thank you to Charles Llewellyn from the Cisco GVE Devnet team for all his hard work, partnership, and support creating this script.
 
