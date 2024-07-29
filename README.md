@@ -1,7 +1,15 @@
 # Catalyst_ZTP
 Automate Zero Touch Provisioning of multiple Cisco Catalyst Switches
 
-## TFTP Server 
+## More information on Cisco Zero Touch Provisioning
+* https://developer.cisco.com/docs/ios-xe/zero-touch-provisioning/#zero-touch-provisioning
+
+## Required Service
+The ZTP script will require the following services from the network
+* DHCP Option 150 and 67 will need to be configured
+* TFTP Server details and credientials
+
+## TFTP Server information for ZTP script
 1. Edit "dotenv.txt" file with TFTP Server details:
     * TFTP Server Login Credentials
     * TFTP_USERNAME = "name"
@@ -11,7 +19,7 @@ Automate Zero Touch Provisioning of multiple Cisco Catalyst Switches
 
 2.  Rename file "dotenv.txt" to ".env"
 
-## Needed Python Package
+## Install the needed Python Package
 1.  Pip Install the needed python packages
     * gradio
     * jinja2
@@ -20,8 +28,8 @@ Automate Zero Touch Provisioning of multiple Cisco Catalyst Switches
     * paramiko
     * python-dotenv
 
-## Run the ZTP Gradio script
-1. run the python script
+## Using the ZTP Gradio script
+1. Run the python script
     * python ztp_gradio.py
 
 2.  Open web browser and access local gradio server. 
