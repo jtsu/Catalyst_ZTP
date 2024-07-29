@@ -59,5 +59,5 @@ The ZTP script will require the following services from the network
 
 
 ## Acknowledgements
-Huge thank you to Charles Llewellyn from the Cisco GVE Devnet team for his partnership and support creating this script.
+Huge thank you to Charles Llewellyn from the Cisco GVE Devnet team for his all his hard work, partnership, and support creating this script.
 
