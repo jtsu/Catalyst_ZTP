@@ -61,6 +61,7 @@ The ZTP script will require the following services from the network
    
 6.  Click 'Preview Data' button
     * The Excel data will be converted to the needed python data type.
+   ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/data_loaded.png?raw=true)
 
 7.  Click 'Saved and Upload' button
     * Saves a local copy of the converted python data to the local 'data' subdirectory.
