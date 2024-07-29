@@ -54,6 +54,7 @@ The ZTP script will require the following services from the network
     * The Excel template file and ztp.py file will be created in the 'data' subdirectory.
       ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/data_subdir.png?raw=true)
         * The 'data' subdirectory will be created if it doesn't exist.
+        * ztp.py is the python script that will be executed during the onboarding process with ZTP.
 
 4.  Add the devices with the variable parameters to the Excel file and save the file.
    * Variable parameters that are unique for each device will be in the Device Specific Worksheet tab.    
