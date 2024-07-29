@@ -1,7 +1,7 @@
 # Catalyst_ZTP
 Zero-Touch Provisioning automates the process of configuring Cisco Catalyst Switches that are added in your network for the first time. The Catalyst ZTP script simplifies the creation and deployment of ZTP, making it easier to setup multiple devices at scale during the initial deployment.
 
-## Here's a link to Cisco DevNet for more information on Cisco Zero Touch Provisioning.
+Here's a link to Cisco DevNet for more information on Cisco Zero Touch Provisioning.
 * https://developer.cisco.com/docs/ios-xe/zero-touch-provisioning/#zero-touch-provisioning
 
 
