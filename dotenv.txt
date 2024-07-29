@@ -1,0 +1,5 @@
+# TFTP Server Login Credentials
+TFTP_USERNAME = "username"
+TFTP_PASSWORD = "password"
+TFTP_SERVER = "192.168.1.5"
+TFTP_SERVER_PATH = "/path/tftp-files"
