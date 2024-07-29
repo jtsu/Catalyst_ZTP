@@ -6,9 +6,9 @@ Automate Zero Touch Provisioning of multiple Cisco Catalyst Switches
 * https://developer.cisco.com/docs/ios-xe/zero-touch-provisioning/#zero-touch-provisioning
 
 
-## Required Service
+## Required Services
 The ZTP script will require the following services from the network
-* DHCP Option 150 and 67 will need to be configured
+* DHCP Server with DHCP Option 150 and 67 will need to be configured
 * TFTP Server details and credientials need to be provided
 
 
