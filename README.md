@@ -24,7 +24,7 @@ The ZTP script will require the following services from the network
 
 
 ## Install the needed Python Package
-1.  Pip Install the needed python packages
+1.  Pip install the following Python Packages:
     * gradio
     * jinja2
     * pandas
