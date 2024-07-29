@@ -50,7 +50,7 @@ The ZTP script will require the following services from the network
        * Variable parameters that are common to multiple devices are the Device Common variables.
           * These variables should be added using the web forms in the template creator.
           * The template creator will add your devices common variables to a separate worksheet in the excel template file.
-    * Click Save Template and a new Excel file will be created with the variable parameter selected. 
+    * Click the 'Save Template' button and a new Excel file will be created with the selected variable parameters. 
     * The Excel template file and ztp.py file will be created in the 'data' subdirectory.
       ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/data_subdir.png?raw=true)
         * The 'data' subdirectory will be created if it doesn't exist.
