@@ -45,7 +45,7 @@ The ZTP script will require the following services from the network
     ![load_data](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/template_creator.png?raw=true)
     * Choose the variables parameters you want to include in the Excel Template file.
     * Click Save Template and a new Excel file will be created with the variable parameter selected. 
-    * The Excel template file and ztp.py file will be created in the "data" subdirectory.  
+    * The Excel template file and ztp.py file will be created in the 'data' subdirectory.  
         * The 'data' subdirectory will be created if it doesn't exist.
 
 5.  Add the devices with the variable parameters to the Excel file and save the file.
