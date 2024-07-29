@@ -50,22 +50,22 @@ The ZTP script will require the following services from the network
       ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/data_subdir.png?raw=true)
         * The 'data' subdirectory will be created if it doesn't exist.
 
-5.  Add the devices with the variable parameters to the Excel file and save the file.
+4.  Add the devices with the variable parameters to the Excel file and save the file.
    * Variable parameters that are unique for each device will be in the Device Specific Worksheet tab.    
    ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/excel_specific.png?raw=true)
    * Variable paramters that are common to multiple devices will be in the Device Common Worksheet tab.
     ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/excel_common.png?raw=true)
-7.   
-   
-8.  Load the modified Excel Data File in the ZTP Web GUI.
+  
+5.  Load the modified Excel Data File in the ZTP Web GUI.
     ![load_data](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/load_data.png?raw=true)
    
-9.  Click 'Preview Data' button
+6.  Click 'Preview Data' button
     * The Excel data will be converted to the needed python data type.
 
-10.  Click 'Saved and Upload' button
+7.  Click 'Saved and Upload' button
     * Saves a local copy of the converted python data to the local 'data' subdirectory.
     * The python data file and the ztp.py script in the 'data' subdirectory will be upload to the TFTP.
+    ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/data_subdir2.png?raw=true)
 
 
 ## Acknowledgements
