@@ -40,11 +40,11 @@ The ZTP script will require the following services from the network
 2.  Open web browser and access local gradio server. 
     * IP address and port number will be displayed in the terminal. 
 
-3.  An Excel Template file and the ztp.py script file need to be created.  Use the Template Creator tab in the ZTP Web GUI to create both files.
+3.  An Excel Template file and the ztp.py script file need to be created.  Use the Template Creator tab in the ZTP Web GUI to create the files.
     * Choose the variables parameters you want to include in the Excel Template file.
-    * Click Save Template and a new Excel file will be created with the variables you selected. 
+    * Click Save Template and a new Excel file will be created with the variable parameter selected. 
     * The Excel template file and ztp.py file will be created in the "data" subdirectory.  
-        * The subdirectory will be created if it doesn't exist.
+        * The 'data' subdirectory will be created if it doesn't exist.
 
 4.  Add the devices with the variable parameters to the Excel file and save the file.
    
@@ -59,5 +59,5 @@ The ZTP script will require the following services from the network
 
 
 ## Acknowledgements
-Huge thank you to Charles Llewellyn from the Cisco GVE Devnet team for his all his hard work, partnership, and support creating this script.
+Huge thank you to Charles Llewellyn from the Cisco GVE Devnet team for all his hard work, partnership, and support creating this script.
 
