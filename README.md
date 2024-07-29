@@ -40,20 +40,23 @@ The ZTP script will require the following services from the network
 2.  Open web browser and access local gradio server. 
     * IP address and port number will be displayed in the terminal. 
 
-3.  An Excel Template file and the ztp.py script file need to be created.  Use the Template Creator tab in the ZTP Web GUI to create the files.
+3.  An Excel Template file and the ztp.py script file need to be created.
+    Use the Template Creator tab in the ZTP Web GUI to create the files.
+    ![alt text](https://github.com/jtsu/Catalyst_ZTP/Screenshots/load_data.png?raw=true)
+
     * Choose the variables parameters you want to include in the Excel Template file.
     * Click Save Template and a new Excel file will be created with the variable parameter selected. 
     * The Excel template file and ztp.py file will be created in the "data" subdirectory.  
         * The 'data' subdirectory will be created if it doesn't exist.
 
-4.  Add the devices with the variable parameters to the Excel file and save the file.
+5.  Add the devices with the variable parameters to the Excel file and save the file.
    
-5.  Load the modified Excel Data File in the ZTP Web GUI.
+6.  Load the modified Excel Data File in the ZTP Web GUI.
    
-6.  Click 'Preview Data' button
+7.  Click 'Preview Data' button
     * The Excel data will be converted to the needed python data type.
 
-7.  Click 'Saved and Upload' button
+8.  Click 'Saved and Upload' button
     * Saves a local copy of the converted python data to the local 'data' subdirectory.
     * The python data file and the ztp.py script in the 'data' subdirectory will be upload to the TFTP.
 
