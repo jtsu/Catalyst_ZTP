@@ -1,6 +1,5 @@
 # Catalyst_ZTP
-Automate Zero Touch Provisioning of multiple Cisco Catalyst Switches
-
+Zero-Touch Provisioning automates the process of configuring Cisco catalyst switches that are deployed in your network for the first time. The Catalyst ZTP script simplifies the creation and deployment of ZTP, making it easier to set up multiple devices at scale during the initial deployment.
 
 ## More information on Cisco Zero Touch Provisioning
 * https://developer.cisco.com/docs/ios-xe/zero-touch-provisioning/#zero-touch-provisioning
@@ -9,6 +8,8 @@ Automate Zero Touch Provisioning of multiple Cisco Catalyst Switches
 ## Required Services
 The ZTP script will require the following services from the network
 * DHCP Server with DHCP Option 150 and 67 will need to be configured
+   * option tftp-server-name "10.1.1.5";
+   * option bootfile-name "ztp.py";
 * TFTP Server details and credientials need to be provided
 
 
