@@ -3,7 +3,7 @@ Automate Zero Touch Provisioning of multiple Cisco Catalyst Switches
 
 
 1.  Edit "dotenv.txt" file with TFTP Server details:
-    # TFTP Server Login Credentials
+    TFTP Server Login Credentials
     TFTP_USERNAME = "name"
     TFTP_PASSWORD = "password"
     TFTP_SERVER = "10.1.1.5"
