@@ -71,7 +71,7 @@ The ZTP script will require the following services from the network
 7.  Click 'Saved and Upload' button
     * Saves a local copy of the converted python data to the local 'data' subdirectory.
     * The python data file and the ztp.py script in the 'data' subdirectory will be upload to the TFTP.
-    * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/data_subdir2.png" height="200">
+    * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/data_subdir2.png" height="100">
 
 # Acknowledgements
 Huge thank you to Charles Llewellyn from the Cisco GVE Devnet team for all his hard work, partnership, and support creating this script.
