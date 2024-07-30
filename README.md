@@ -36,8 +36,8 @@ The ZTP script will require the following services from the network
     * python ztp_gradio.py
 
 2.  Open web browser and access local gradio server. 
-    * IP address and port number will be displayed in the terminal.
-      <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/gradio_url.png" height="70">
+    * IP address and port number will be displayed in the terminal
+    * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/gradio_url.png" height="70">
 
 3.  An Excel Template file and the ztp.py script file need to be created.
     * Use the Template Creator tab in the ZTP Web GUI to create the files.
