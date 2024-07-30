@@ -1,7 +1,7 @@
 # Catalyst_ZTP
 Zero-Touch Provisioning automates the process of configuring Cisco Catalyst Switches that are added in your network for the first time. The Catalyst ZTP script simplifies the creation and deployment of ZTP, making it easier to setup multiple devices at scale during the initial deployment.
 
-Here's a link to Cisco DevNet for more information on Cisco Zero Touch Provisioning.
+Check out Cisco DevNet for more information on Cisco Zero Touch Provisioning.
 * https://developer.cisco.com/docs/ios-xe/zero-touch-provisioning/#zero-touch-provisioning
 
 
@@ -38,6 +38,8 @@ The ZTP script will require the following services from the network
 2.  Open web browser and access local gradio server. 
     * IP address and port number will be displayed in the terminal.
     * ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/gradio_url.png?raw=true)
+    * <img src="[https://github.com/favicon.ico](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/gradio_url.png)" height="100">
+
 
 3.  An Excel Template file and the ztp.py script file need to be created.
     * Use the Template Creator tab in the ZTP Web GUI to create the files.
