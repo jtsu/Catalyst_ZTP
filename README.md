@@ -41,7 +41,7 @@ The ZTP script will require the following services from the network
 
 3.  An Excel Template file and the ztp.py script file need to be created.
     * Use the Template Creator tab in the ZTP Web GUI to create the files.
-    * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/template_creator.png" height="300">
+    * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/template_creator.png" height="400">
     * Choose the variables parameters you want to include in the Excel Template file.
        * Variable parameters that are unique for each device are the Device Specific variables.
           * The template creator will create column headers for the selected device specific variables, but the devices unique variables should be added to the Excel spreadsheet after the template is created. 
