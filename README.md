@@ -41,7 +41,7 @@ The ZTP script will require the following services from the network
 
 3.  An Excel Template file and the ztp.py script file need to be created.
     * Use the Template Creator tab in the ZTP Web GUI to create the files.
-    ![template_creator](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/template_creator.png?raw=true)
+    * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/template_creator.png" height="200">
     * Choose the variables parameters you want to include in the Excel Template file.
        * Variable parameters that are unique for each device are the Device Specific variables.
           * The template creator will create column headers for the selected device specific variables, but the devices unique variables should be added to the Excel spreadsheet after the template is created. 
@@ -57,10 +57,10 @@ The ZTP script will require the following services from the network
 
 
 4.  Add the devices with the variable parameters to the Excel file and save the file.
-   * Variable parameters that are unique for each device will be in the Device Specific Worksheet tab.    
-     ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/excel_specific.png?raw=true)
+   * Variable parameters that are unique for each device will be in the Device Specific Worksheet tab.
+   * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/excel_specific.png" height="200">
    * Variable paramters that are common to multiple devices will be in the Device Common Worksheet tab.
-     ![gradio_url](https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/excel_common.png?raw=true)
+   * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/excel_common.png" height="200">
   
 5.  Load the modified Excel Data File in the ZTP Web GUI.
     * <img src="https://github.com/jtsu/Catalyst_ZTP/blob/main/Screenshots/load_data.png" height="200">
