@@ -1,20 +1,3 @@
-"""
-Copyright (c) 2024 Cisco and/or its affiliates.
-
-This software is licensed to you under the terms of the Cisco Sample
-Code License, Version 1.1 (the "License"). You may obtain a copy of the
-License at
-
-               https://developer.cisco.com/docs/licenses
-
-All use of the material herein must be in accordance with the terms of
-the License. All rights not expressly granted by the License are
-reserved. Unless required by applicable law or agreed to separately in
-writing, software distributed under the License is distributed on an "AS
-IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
-or implied.
-"""
-
 from jinja2 import Environment, BaseLoader
 
 def generate_configuration(enable_device_specific_features, enable_features, TFTP_SERVER=None, SOFTWARE_UPGRADE=None,SOFTWARE_IMAGE_FILE_NAME=None,SOFTWARE_IMAGE_MD5_HASH=None):
@@ -31,7 +14,7 @@ def generate_configuration(enable_device_specific_features, enable_features, TFT
     device_specific_feature_templates = {
         # "serial_number_enabled": """ """,
         "hostname_enabled": """cli.configurep(['hostname {}'.format(device_specific_values[serial].get('hostname'))])""",
-        "mgmt_v4_ip_enabled": """cli.configurep([f"interface Vlan{mgmt_vlan_number}", "description Mgmt", f"ip address {device_specific_values[serial].get('mgmt_v4_ip')} {device_specific_values[serial].get('mgmt_v4_mask')}", "no ip redirects", "no ip proxy-arp", "no shutdown", "end"])""",
+        "mgmt_v4_ip_enabled": """cli.configurep([f"interface Vlan{mgmt_vlan_number}", "description Mgmt", f"ip address {device_specific_values[serial].get('mgmt_v4_ip')} {device_specific_values[serial]['mgmt_v4_mask']}", "no ip redirects", "no ip proxy-arp", "no shutdown", "end"])""",
         # "mgmt_v4_mask_enabled": """ """,
         "mgmt_v6_ip_enabled": """cli.configurep([f"interface Vlan{mgmt_vlan_number}", "description Mgmt", f"ipv6 address {device_specific_values[serial].get('mgmt_v6_ip')}/64", "no ip redirects", "no ip proxy-arp", "end"])""",
         "default_gateway_enabled": """cli.configurep([f"ip default-gateway {device_specific_values[serial].get('default_gateway')}", "end"])"""
@@ -52,8 +35,8 @@ def generate_configuration(enable_device_specific_features, enable_features, TFT
                          "ntp_servers_enabled": """cli.configurep([f"ntp server {device_common_values['ntp_servers']}", "end"])""",
                          "syslog_servers_enabled": """cli.configurep([f"logging host {device_common_values['syslog_servers']}", "end"])""",
                          "dhcp_snooping_vlans_enabled": """cli.configurep(["ip dhcp snooping", f"ip dhcp snooping vlan {device_common_values['dhcp_snooping_vlans']}", "end"])""",
-                         "http_value_enabled": """cli.configurep(["no ip http server", "end"])""",
-                         "https_value_enabled": """cli.configurep(["no ip http secure-server", "end"])""",
+                         "http_value_enabled": """cli.configurep(["ip http server", "end"])""",
+                         "https_value_enabled": """cli.configurep(["ip http secure-server", "end"])""",
                          "ssh_value_enabled": """cli.configurep(["crypto key generate rsa general-keys modulus 2048", "ip ssh version 2", "end"])""",
                          "aaa_enabled": """cli.configurep(["aaa new-model"])""",
                          "snmp_enabled": """cli.configurep([f"snmp-server community {device_common_values['snmp_public_community']} RO ipv6 ipv6-snmp-mgmt ipv4-snmp-mgmt", "end"])
@@ -79,6 +62,14 @@ cli.configurep([f"snmp-server host {device_common_values['snmp_server']} version
         if enabled and feature in feature_templates:
             template_variables[feature] = feature_templates[feature]
 
+    if SOFTWARE_UPGRADE and SOFTWARE_IMAGE_MD5_HASH and SOFTWARE_IMAGE_FILE_NAME:
+        template_variables["SOFTWARE_UPGRADE"] = SOFTWARE_UPGRADE
+        template_variables["SOFTWARE_IMAGE_MD5_HASH"] = SOFTWARE_IMAGE_MD5_HASH
+        template_variables["SOFTWARE_IMAGE_FILE_NAME"] = SOFTWARE_IMAGE_FILE_NAME
+    else:
+        template_variables["SOFTWARE_UPGRADE"] = False
+        template_variables["SOFTWARE_IMAGE_MD5_HASH"] = ""
+        template_variables["SOFTWARE_IMAGE_FILE_NAME"] = ""
 
     if TFTP_SERVER:
         template_variables["TFTP_SERVER"] = TFTP_SERVER

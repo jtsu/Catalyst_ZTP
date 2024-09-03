@@ -1,20 +1,3 @@
-"""
-Copyright (c) 2024 Cisco and/or its affiliates.
-
-This software is licensed to you under the terms of the Cisco Sample
-Code License, Version 1.1 (the "License"). You may obtain a copy of the
-License at
-
-               https://developer.cisco.com/docs/licenses
-
-All use of the material herein must be in accordance with the terms of
-the License. All rights not expressly granted by the License are
-reserved. Unless required by applicable law or agreed to separately in
-writing, software distributed under the License is distributed on an "AS
-IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
-or implied.
-"""
-
 # pip install openpyxl gradio pandas paramiko python-dotenv
 
 import os
@@ -38,8 +21,9 @@ TFTP_SERVER = os.getenv("TFTP_SERVER")  # TFTP server IP
 TFTP_SERVER_PATH = os.getenv("TFTP_SERVER_PATH")  # Path on the TFTP server
 TFTP_USERNAME = os.getenv("TFTP_USERNAME")  # Username in .env file
 TFTP_PASSWORD = os.getenv("TFTP_PASSWORD")  # Password in .env file
-
-
+SOFTWARE_UPGRADE = strtobool(os.getenv("SOFTWARE_UPGRADE")) # Bool value (should the software be ugraded?)
+SOFTWARE_IMAGE_FILE_NAME = os.getenv("SOFTWARE_IMAGE_FILE_NAME") # Software image file name
+SOFTWARE_IMAGE_MD5_HASH = os.getenv("SOFTWARE_IMAGE_MD5_HASH") # Software image file md5 hash
 def meraki_monitoring_changed(meraki_enabled):
     # If Meraki Monitoring is enabled, also enable SSHv2
     if meraki_enabled:
@@ -258,7 +242,7 @@ def main():
                     """
                             )
             with gr.Column(scale=1):
-                logo = (os.path.join(os.path.dirname(__file__), "cisco-meraki-logo.webp"))
+                logo = (os.path.join(os.path.dirname(__file__), "UC_Riverside_seal.png"))
                 gr.Image(logo, show_label=False, show_download_button=False, container=False)
 
         # Tab 1
@@ -351,6 +335,19 @@ def main():
                 )
                 # Checkboxes and Textboxes for Tab 3 Common value variables
                 with gr.Row():
+                    with gr.Column():
+                        with gr.Row():
+                            iosxe_enabled = gr.Checkbox(label="IOS-XE Upgrade Version", interactive=True, value=False)
+                        with gr.Row(visible=False) as iosxe_row:
+                            iosxe_version = gr.Textbox(
+                                label="Enter the IOS-XE version that should be installed on the device",
+                                placeholder="17.09.05", type="text", interactive=True, visible=True)
+                            iosxe_image_name = gr.Textbox(
+                                label="Enter the IOS-XE image filename",
+                                placeholder="cat9k_iosxe.17.09.05.SPA.bin", type="text", interactive=True, visible=True)
+                            iosxe_image_md5 = gr.Textbox(
+                                label="Enter the IOS-XE image MD5 hash",
+                                placeholder="5ca91b99bee3591fd75c17274ab26d1a", type="text", interactive=True, visible=True)
                     with gr.Column():
                         with gr.Row():
                             mgmt_vlan_enabled = gr.Checkbox(label="Mgmt VLAN", interactive=True, value=False)
@@ -451,9 +448,9 @@ def main():
 
                     with gr.Column():
                         with gr.Row():
-                            http_value_enabled = gr.Checkbox(label="No HTTP Enabled", interactive=True, value=False)
+                            http_value_enabled = gr.Checkbox(label="HTTP Enabled", interactive=True, value=False)
                     with gr.Column():
-                        https_value_enabled = gr.Checkbox(label="No HTTPS Enabled", interactive=True, value=False)
+                        https_value_enabled = gr.Checkbox(label="HTTPS Enabled", interactive=True, value=False)
                     with gr.Column():
                         ssh_value_enabled = gr.Checkbox(label="SSHv2 Enabled", interactive=True, value=False)
                     with gr.Column():
@@ -494,6 +491,7 @@ def main():
                 instruction_output = gr.Markdown()
 
                 # Check for changed in checkbox and change visibility of textbox rows
+                iosxe_enabled.change(column_visible, inputs=[iosxe_enabled], outputs=[iosxe_row])
                 mgmt_vlan_enabled.change(column_visible, inputs=[mgmt_vlan_enabled], outputs=[mgmt_vlan_row])
                 enable_secret_enabled.change(column_visible, inputs=[enable_secret_enabled],
                                              outputs=[enable_secret_row])
@@ -531,6 +529,10 @@ def main():
                     device_save_button_tab3 = gr.Button("Save Template")
                     device_clear_button_tab3 = gr.ClearButton([
                         device_specific_vars,
+                        iosxe_enabled,
+                        iosxe_version,
+                        iosxe_image_name,
+                        iosxe_image_md5,
                         mgmt_vlan_enabled,
                         mgmt_vlan,
                         enable_secret_enabled,
@@ -626,7 +628,11 @@ def main():
                                         "snmp_enabled": False,
                                         "telnet_enabled": False}
 
-
+                    if input[iosxe_enabled]:
+                        device_common["iosxe_enabled"] = input[iosxe_enabled]
+                        device_common["iosxe_version"] = input[iosxe_version]
+                        device_common["iosxe_image_name"] = input[iosxe_image_name]
+                        device_common["iosxe_image_md5"] = input[iosxe_image_md5]
                     if input[mgmt_vlan_enabled]:
                         enabled_features["mgmt_vlan_enabled"] = True
                         device_common["mgmt_vlan_enabled"] = input[mgmt_vlan_enabled]
@@ -685,7 +691,6 @@ def main():
                         device_common["dhcp_snooping_vlans_enabled"] = input[dhcp_snooping_vlans_enabled]
                         device_common["dhcp_snooping_vlans"] = input[dhcp_snooping_vlans]
                     if input[http_value_enabled]:
-                        enabled_features["http_value_enabled"] = True
                         device_common["http_value_enabled"] = input[http_value_enabled]
                     if input[https_value_enabled]:
                         enabled_features["https_value_enabled"] = True
@@ -725,7 +730,7 @@ def main():
                     else:
                         excel_template(device_specific, device_common)
                         with open("./data/ztp.py", "w") as f:
-                            f.write(generate_configuration(enable_device_specific_features=enabled_device_specific_features, enable_features=enabled_features, TFTP_SERVER=TFTP_SERVER))
+                            f.write(generate_configuration(enable_device_specific_features=enabled_device_specific_features, enable_features=enabled_features, TFTP_SERVER=TFTP_SERVER, SOFTWARE_UPGRADE=SOFTWARE_UPGRADE, SOFTWARE_IMAGE_MD5_HASH=SOFTWARE_IMAGE_MD5_HASH, SOFTWARE_IMAGE_FILE_NAME=SOFTWARE_IMAGE_FILE_NAME))
 
 
                 device_save_button_tab3.click(
@@ -733,6 +738,10 @@ def main():
                     inputs={
                         device_serial_number,
                         device_specific_vars,
+                        iosxe_enabled,
+                        iosxe_version,
+                        iosxe_image_name,
+                        iosxe_image_md5,
                         mgmt_vlan_enabled,
                         mgmt_vlan,
                         enable_secret_enabled,
