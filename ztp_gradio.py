@@ -38,9 +38,8 @@ TFTP_SERVER = os.getenv("TFTP_SERVER")  # TFTP server IP
 TFTP_SERVER_PATH = os.getenv("TFTP_SERVER_PATH")  # Path on the TFTP server
 TFTP_USERNAME = os.getenv("TFTP_USERNAME")  # Username in .env file
 TFTP_PASSWORD = os.getenv("TFTP_PASSWORD")  # Password in .env file
-SOFTWARE_UPGRADE = strtobool(os.getenv("SOFTWARE_UPGRADE")) # Bool value (should the software be ugraded?)
-SOFTWARE_IMAGE_FILE_NAME = os.getenv("SOFTWARE_IMAGE_FILE_NAME") # Software image file name
-SOFTWARE_IMAGE_MD5_HASH = os.getenv("SOFTWARE_IMAGE_MD5_HASH") # Software image file md5 hash
+
+
 def meraki_monitoring_changed(meraki_enabled):
     # If Meraki Monitoring is enabled, also enable SSHv2
     if meraki_enabled:
@@ -726,7 +725,7 @@ def main():
                     else:
                         excel_template(device_specific, device_common)
                         with open("./data/ztp.py", "w") as f:
-                            f.write(generate_configuration(enable_device_specific_features=enabled_device_specific_features, enable_features=enabled_features, TFTP_SERVER=TFTP_SERVER, SOFTWARE_UPGRADE=SOFTWARE_UPGRADE, SOFTWARE_IMAGE_MD5_HASH=SOFTWARE_IMAGE_MD5_HASH, SOFTWARE_IMAGE_FILE_NAME=SOFTWARE_IMAGE_FILE_NAME))
+                            f.write(generate_configuration(enable_device_specific_features=enabled_device_specific_features, enable_features=enabled_features, TFTP_SERVER=TFTP_SERVER))
 
 
                 device_save_button_tab3.click(
