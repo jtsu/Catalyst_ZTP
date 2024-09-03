@@ -242,7 +242,7 @@ def main():
                     """
                             )
             with gr.Column(scale=1):
-                logo = (os.path.join(os.path.dirname(__file__), "UC_Riverside_seal.png"))
+                logo = (os.path.join(os.path.dirname(__file__), "cisco-meraki-logo.webp"))
                 gr.Image(logo, show_label=False, show_download_button=False, container=False)
 
         # Tab 1
